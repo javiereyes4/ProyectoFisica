@@ -222,35 +222,28 @@
         </div>
       </div>
     </section>
-    <br />
-    <br />
-    <br />
 
   <!--==========================
   Contact Section
   ============================-->
-  <!--<section id="contact">
+  <section id="contact">
     <div class="container wow fadeInUp">
       <div class="row">
         <div class="col-md-12" style="text-align:center;background-color:white;border-radius:50px;padding:25px">
-          <h3 class="section-title">RECONOCEDOR DE IMAGENES</h3>
-		  
-		  <input style="margin-right:auto;margin-left:auto;" id="filetext" name="myFile" type="file">		  
-		  <br/>
-		  <input type="button" id="btnoc" class="btn-get-started btnoc" onclick="myFunction()" value="RECONOCER"/>
-		  <br/>		  
-		  
-		  <div style="text-align:center;width:80%;height:auto;margin-right:auto;margin-left:auto;"> 
-			<img id="img1" style="width:auto;height:auto;display:none;margin-left:auto;margin-right:auto;max-width:600px;max-height:600px" />
-			<br/><br/>	
-			<img id="im" style="display:none;margin-left:auto;margin-right:auto;" src="img/preloader.svg" />			
-	      </div>
-		  <div id="p1" contenteditable="true"  style="width:600px;height:300px;max-height:300px;overflow-y:auto;margin-left:auto;margin-right:auto;display:none;">
-		  </div>-->
-		  <!--<input type="button" id="save" style="display:none;margin-left:auto;margin-right:auto;" download="contenido.txt" class="btn-get-started btnoc" value="DESCARGAR"/>-->
-		  
-		  <!--<a href="#" id="link" style="display:none;margin-left:auto;margin-right:auto;" download="contenido.txt">Descargar el contenido del textarea</a>
-        </div>
+          <h3 class="section-title">EXPERIMENTO</h3>
+      
+      <div>
+        <div class='divBombillo'></div>
+		    <img src="img/bombilla.jpg" />
+      </div>
+
+      <div style="margin-top:40px;">
+        <select id="val" style="height: 40px;border-radius: 15px;width: 120px;text-align: center;" onchange="myFunction()">
+          <option value="-1">Seleccione</option>
+          <option value="9">9 V</option>
+          <option value="15">15 V</option>
+          <option value="24">24 V</option>
+        </select>
       </div>
 
       <div class="row">
@@ -259,7 +252,7 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 
   <!--==========================
   Footer
@@ -317,25 +310,18 @@
 
 function myFunction() {
 	
-	$("#im").css('display','block');
-	
-	document.getElementById("p1").innerHTML="";
-	
-	var namefile = $("#filetext").val().split('\\')[2];
-	
-	
-	$("#img1").attr('src','img/'+namefile)
-	$("#img1").css('display','block');
-	
-    var imagenReconocer = document.getElementById("img1");
-            Tesseract.recognize(imagenReconocer.src, { lang: 'spa' })
-                .then(function (result) {
-                    document.getElementById("p1").innerText += result.text;
-					$("#p1").css('display','block');
-					$("#im").css('display','none');
-					$("#link").css('display','block');					
-                });			
-	
+  if($("#val").val() == 9){
+    $(".divBombillo").css('box-shadow','0px 0px 90px 20px #F7CC32');
+
+  }else if($("#val").val() == 15){
+    $(".divBombillo").css('box-shadow','0px 0px 90px 36px #F7CC32');
+
+  }else if($("#val").val() == 24){
+    $(".divBombillo").css('box-shadow','0px 0px 90px 55px #F7CC32');
+
+  }else{
+    $(".divBombillo").css('box-shadow','none');
+  }
 }
 
 window.onload = function() {
